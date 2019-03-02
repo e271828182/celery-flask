@@ -1,10 +1,10 @@
 from celery import Celery
 
-celery = Celery()
+# celery = Celery()
 
 
 def make_celery(app):
-    global celery
+    # global celery
     celery = Celery(
         app.import_name,
         backend=app.config['CELERY_RESULT_BACKEND'],
