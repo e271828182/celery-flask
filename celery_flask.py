@@ -3,7 +3,6 @@ from webapp import create_app
 
 
 flask_app = create_app()
-# celery = make_celery(flask_app)
 
 
 if __name__ == '__main__':

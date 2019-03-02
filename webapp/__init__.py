@@ -1,9 +1,5 @@
 from flask import Flask
-# from celery import Celery
-from flask_celery import Celery
-
-
-celery = Celery()
+from webapp.task import celery
 
 
 def register_web_blueprint(app):
@@ -18,7 +14,8 @@ def create_app():
         CELERY_RESULT_BACKEND='redis://192.168.10.12:6379/2'
     )
 
-    celery.init_app(flask_app)
+    from webapp.task import make_celery
+    make_celery(flask_app)
 
     register_web_blueprint(flask_app)
 
