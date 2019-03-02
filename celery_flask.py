@@ -1,9 +1,9 @@
 from webapp import create_app
-from webapp import make_celery
+# from webapp import make_celery
 
 
 flask_app = create_app()
-celery = make_celery(flask_app)
+# celery = make_celery(flask_app)
 
 
 if __name__ == '__main__':
