@@ -1,4 +1,4 @@
-from celery_flask import celery
+from .. import celery
 
 
 @celery.task()
