@@ -3,7 +3,7 @@ from webapp import make_celery
 from flask import current_app
 
 
-celery = make_celery(current_app._get_current_object.top)
+celery = make_celery(current_app._get_current_object().top)
 
 
 @celery.task()
