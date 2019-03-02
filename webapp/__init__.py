@@ -1,5 +1,4 @@
 from flask import Flask
-from webapp.task import celery
 
 
 def register_web_blueprint(app):

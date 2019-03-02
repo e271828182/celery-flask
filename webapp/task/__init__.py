@@ -1,16 +1,16 @@
 from celery import Celery
 
-# celery = Celery()
+celery = Celery()
 
 
 def make_celery(app):
     # global celery
-    celery = Celery(
+    celery.__init__(
         app.import_name,
         backend=app.config['CELERY_RESULT_BACKEND'],
         broker=app.config['CELERY_BROKER_URL']
     )
-    # celery.main = app.import_name
+    celery.main = app.import_name
     # celery.__autoset('result_backend', app.config['CELERY_RESULT_BACKEND'])
     # celery.__autoset('broker_url', app.config['CELERY_BROKER_URL'])
 
