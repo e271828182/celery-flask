@@ -9,10 +9,10 @@ def create_app():
         CELERY_BROKER_URL='redis://192.168.10.12:6379',
         CELERY_RESULT_BACKEND='redis://192.168.10.12:6379'
     )
-    celery = make_celery(flask_app)
-    celery.init_app(flask_app)
+    # celery = make_celery(flask_app)
+    # celery.init_app(flask_app)
 
-    return flask_app, celery
+    return flask_app
 
 
 def make_celery(app):
