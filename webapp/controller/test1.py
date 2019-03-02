@@ -10,4 +10,4 @@ def hello():
 @controller.route('/task', methods=['GET', 'POST'])
 def task():
     exec_task.delay(23, 42)
-    return "hello"
+    return "task"
