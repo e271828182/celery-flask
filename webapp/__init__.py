@@ -10,8 +10,8 @@ def register_web_blueprint(app):
 def create_app():
     flask_app = Flask(__name__)
     flask_app.config.update(
-        CELERY_BROKER_URL='redis://192.168.10.12:6379',
-        CELERY_RESULT_BACKEND='redis://192.168.10.12:6379'
+        CELERY_BROKER_URL='redis://192.168.10.12:6379/1',
+        CELERY_RESULT_BACKEND='redis://192.168.10.12:6379/2'
     )
 
     register_web_blueprint(flask_app)
