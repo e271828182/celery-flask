@@ -1,5 +1,6 @@
 from webapp import create_app
 # from webapp import make_celery
+from celery import Celery
 
 
 def make_celery(app):
