@@ -1,9 +1,10 @@
 from flask import Flask
-from celery import Celery
+# from celery import Celery
 from flask_celery import Celery
 
 
 celery = Celery()
+
 
 def register_web_blueprint(app):
     from webapp.controller import controller
