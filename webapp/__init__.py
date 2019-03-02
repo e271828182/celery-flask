@@ -3,6 +3,11 @@ from flask import Flask
 from celery import Celery
 
 
+def register_web_blueprint(app):
+    from webapp.controller import controller
+    app.register_blueprint(controller)
+
+
 def create_app():
     flask_app = Flask(__name__)
     flask_app.config.update(
@@ -11,6 +16,8 @@ def create_app():
     )
     # celery = make_celery(flask_app)
     # celery.init_app(flask_app)
+
+    register_web_blueprint(flask_app)
 
     return flask_app
 
@@ -30,3 +37,6 @@ def make_celery(app):
 
     celery.Task = ContextTask
     return celery
+
+
+
