@@ -1,5 +1,5 @@
-from . import ws as socketio
-from . import ws_c
+from . import socketio
+from . import ws
 from flask import render_template
 from threading import Lock
 import time
