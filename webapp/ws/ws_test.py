@@ -10,7 +10,7 @@ thread = None
 thread_lock = Lock()
 
 
-@ws_c.route('/')
+@ws.route('/')
 def index():
     return render_template('ws.html')
 
