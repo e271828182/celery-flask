@@ -1,3 +1,4 @@
+# -*- coding=utf-8 -*-
 from . import socketio
 from . import ws
 from flask import render_template

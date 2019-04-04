@@ -1,3 +1,4 @@
+# -*- coding=utf-8 -*-
 from . import controller
 from webapp.task.tasks import exec_task
 from flask import request

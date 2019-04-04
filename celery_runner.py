@@ -1,3 +1,4 @@
+# -*- coding=utf-8 -*-
 from webapp import create_app
 from webapp.task import make_celery
 
