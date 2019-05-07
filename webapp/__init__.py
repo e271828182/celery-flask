@@ -27,7 +27,7 @@ def create_app():
         BROKER_TRANSPORT_OPTIONS={
             'master_name': "master-dev"
         },
-        result_backend_transport_options={
+        CELERY_RESULT_BACKEND_TRANSPORT_OPTIONS={
             'master_name': "master-dev"
         }
     )
