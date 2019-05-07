@@ -6,8 +6,8 @@ celery = Celery()
 
 def make_celery(app):
     celery.main = app.import_name
-    celery.conf.broker_url = app.config['CELERY_BROKER_URL']
-    celery.conf.result_backend = app.config['CELERY_RESULT_BACKEND']
+    # celery.conf.broker_url = app.config['CELERY_BROKER_URL']
+    # celery.conf.result_backend = app.config['CELERY_RESULT_BACKEND']
     # celery.__init__(
     #     app.import_name,
     #     backend=app.config['CELERY_RESULT_BACKEND'],
