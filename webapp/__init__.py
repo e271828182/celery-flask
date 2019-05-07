@@ -12,22 +12,22 @@ def register_web_blueprint(app):
 def create_app():
     flask_app = Flask(__name__)
     flask_app.config.update(
-        BROKER_URL='sentinel://:%(password)s@%(node1)s;sentinel://:%(password)s@%(node2)s;sentinel://:%(password)s@%(node3)s' % {
+        broker_url='sentinel://:%(password)s@%(node1)s;sentinel://:%(password)s@%(node2)s;sentinel://:%(password)s@%(node3)s' % {
             'password': 'wIvJt@_redis',
             'node1': '192.168.11.29:26001',
             'node2': '192.168.11.32:26001',
             'node3': '192.168.11.20:26001'
         },
-        CELERY_RESULT_BACKEND='sentinel://:%(password)s@%(node1)s;sentinel://:%(password)s@%(node2)s;sentinel://:%(password)s@%(node3)s' % {
+        result_backend='sentinel://:%(password)s@%(node1)s;sentinel://:%(password)s@%(node2)s;sentinel://:%(password)s@%(node3)s' % {
             'password': 'wIvJt@_redis',
             'node1': '192.168.11.29:26001',
             'node2': '192.168.11.32:26001',
             'node3': '192.168.11.20:26001'
         },
-        BROKER_TRANSPORT_OPTIONS={
+        broker_transport_options={
             'master_name': "master-dev"
         },
-        CELERY_RESULT_BACKEND_TRANSPORT_OPTIONS={
+        result_backend_transport_options={
             'master_name': "master-dev"
         }
     )
