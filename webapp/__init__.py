@@ -12,15 +12,7 @@ def register_web_blueprint(app):
 def create_app():
     flask_app = Flask(__name__)
     flask_app.config.update(
-        CELERY_BROKER_URL='sentinel://:%(password)s@%(node1)s;sentinel://:%(password)s@%(node2)s;sentinel://:%(password)s@%(node3)s' % {
-            'password': 'wIvJt@_redis',
-            'node1': '192.168.11.29:26001',
-            'node2': '192.168.11.32:26001',
-            'node3': '192.168.11.20:26001'
-        },
-        CELERY_BROKER_TRANSPORT_OPTIONS = {
-            'master_name': "master-dev"
-        }
+        CELERY_BROKER_URL='redis://192.168.10.12:6379'
     )
 
     from webapp.task import make_celery
