@@ -12,24 +12,15 @@ def register_web_blueprint(app):
 def create_app():
     flask_app = Flask(__name__)
     flask_app.config.update(
-        broker_url='sentinel://:%(password)s@%(node1)s;sentinel://:%(password)s@%(node2)s;sentinel://:%(password)s@%(node3)s' % {
+        CELERY_BROKER_URL='sentinel://:%(password)s@%(node1)s;sentinel://:%(password)s@%(node2)s;sentinel://:%(password)s@%(node3)s' % {
             'password': 'wIvJt@_redis',
             'node1': '192.168.11.29:26001',
             'node2': '192.168.11.32:26001',
             'node3': '192.168.11.20:26001'
         },
-        # result_backend='sentinel://:%(password)s@%(node1)s;sentinel://:%(password)s@%(node2)s;sentinel://:%(password)s@%(node3)s' % {
-        #     'password': 'wIvJt@_redis',
-        #     'node1': '192.168.11.29:26001',
-        #     'node2': '192.168.11.32:26001',
-        #     'node3': '192.168.11.20:26001'
-        # },
-        broker_transport_options={
+        CELERY_BROKER_TRANSPORT_OPTIONS = {
             'master_name': "master-dev"
         }
-        # result_backend_transport_options={
-        #     'master_name': "master-dev"
-        # }
     )
 
     from webapp.task import make_celery
