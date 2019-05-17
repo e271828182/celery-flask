@@ -1,6 +1,7 @@
 # -*- coding=utf-8 -*-
 from . import controller
 from webapp.task.tasks import exec_task, exec_task2, kill_celery_task
+from webapp.task.bbeat import bbbb_task
 from flask import request
 
 
@@ -30,4 +31,11 @@ def task2():
 def kill_task():
     name = request.args.get("name", default="aaa")
     kill_celery_task.apply_async(args=(name, ), priority=0)
+    return "task"
+
+
+@controller.route('/beat_task', methods=['GET', 'POST'])
+def beat_task():
+    aaa = request.args.get("aaa", default=456)
+    bbbb_task.apply_async(args=(aaa, ))
     return "task"
