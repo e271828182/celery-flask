@@ -24,7 +24,7 @@ def make_celery(app):
     celery.conf.beat_schedule = {
         'save_user_info': {
             'task': 'webapp.task.bbeat.bbbb_task',
-            'schedule': crontab(hour=10, minute=40),
+            'schedule': crontab(hour=10, minute=47),
             'args': (123,)
         }
     }
