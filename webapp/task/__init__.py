@@ -1,5 +1,6 @@
 # -*- coding=utf-8 -*-
 from celery import Celery
+from celery.schedules import crontab
 
 celery = Celery()
 
@@ -19,6 +20,22 @@ def make_celery(app):
     if app.config.get('CELERY_BROKER_TRANSPORT_OPTIONS'):
         celery.conf.broker_transport_options = app.config['CELERY_BROKER_TRANSPORT_OPTIONS']
         # celery.conf.result_backend_transport_options = app.config['CELERY_BROKER_TRANSPORT_OPTIONS']
+
+    celery.conf.beat_schedule = {
+        'save_user_info': {
+            'task': 'webapp.task.bbeat',
+            'schedule': crontab(hour=10, minute=30),
+            'args': (123,)
+        }
+    }
+
+
+    celery.conf.imports = (
+        'webapp.task.bbeat',
+    )
+    celery.conf.timezone = 'Asia/Shanghai'
+
+
     celery.conf.update(app.config)
 
     class ContextTask(celery.Task):
